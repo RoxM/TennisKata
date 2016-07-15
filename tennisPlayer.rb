@@ -5,8 +5,8 @@ class TennisPlayer
 	end
 
 	def score
-		if @points == 0 then return 'love' end
-		if @points == 1 then return 'fifteen' end
+		return 'love' if @points == 0  
+		return 'fifteen' if @points == 1  
 	end
 
 	def winsPoint
