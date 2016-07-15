@@ -15,7 +15,9 @@ class TennisGame
 	def score
 		if playerOneScore == 'forty' and playerTwoScore == 'forty'
 			return 'Duece'
-		else	
+		elsif @playerOne.points == 4 and @playerTwo.points == 3
+			return "Advantage #{@playerOne.name}"
+		else		
 			return "Score #{playerOneScore}-#{playerTwoScore}"
 		end
 	end
