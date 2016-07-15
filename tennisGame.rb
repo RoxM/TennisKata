@@ -2,7 +2,15 @@ class TennisGame
 	
 
 	def score
-		'Score love-love'
+		"Score #{playerOneScore}-#{playerTwoScore}"
+	end
+
+	def playerOneScore
+		'love'
+	end
+
+	def playerTwoScore
+		'love'
 	end
 
 end
