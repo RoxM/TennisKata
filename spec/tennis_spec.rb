@@ -51,12 +51,25 @@ describe TennisGame do
 		expect(@game.score).to eq('Duece')
 	end
 
-	it 'returns Advantage for the player one with one more point after 3 points by both' do
+	it 'returns Advantage for the player one with one more point after 3 points by both' do #delete later
 		4.times{@playerOne.winsPoint}
 		3.times{@playerTwo.winsPoint}
 
 		expect(@game.score).to eq("Advantage #{@playerOne.name}")
-
 	end
+
+	it 'returns Advantage for player one with one more point after 4 points each' do
+		5.times{@playerOne.winsPoint}
+		4.times{@playerTwo.winsPoint}
+
+		expect(@game.score).to eq("Advantage #{@playerOne.name}")
+	end
+
+	it 'returns Game for player 1 when have 2 points more than player2, but at least 3 points' do
+		4.times{@playerOne.winsPoint}
+
+		expect(@game.score).to eq("Game to #{@playerOne.name}")
+	end
+
 
 end
