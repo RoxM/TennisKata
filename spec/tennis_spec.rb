@@ -31,4 +31,17 @@ describe TennisGame do
 		expect(@game.score).to eq('Score thirty-love')
 	end
 
+	it 'Return fifteen-thirty-love when player1 makes 1 points and player2 2 points' do #remove later
+		1.times{@playerOne.winsPoint}
+		2.times{@playerTwo.winsPoint}
+
+		expect(@game.score).to eq('Score fifteen-thirty')
+	end
+
+	it 'Return Forty-love when player1 makes 2 points and player2 nothing' do
+		3.times{@playerOne.winsPoint}
+
+		expect(@game.score).to eq('Score forty-love')
+	end
+
 end
