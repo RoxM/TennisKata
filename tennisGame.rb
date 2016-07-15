@@ -1,16 +1,19 @@
 class TennisGame
-	
-
-	def score
-		"Score #{playerOneScore}-#{playerTwoScore}"
+	def initialize playerOne, playerTwo
+		@playerOne = playerOne
+		@playerTwo = playerTwo
 	end
 
 	def playerOneScore
-		'love'
+		@playerOne.score
 	end
 
 	def playerTwoScore
-		'love'
+		@playerTwo.score
+	end
+
+	def score
+		"Score #{playerOneScore}-#{playerTwoScore}"
 	end
 
 end
