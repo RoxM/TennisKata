@@ -13,7 +13,11 @@ class TennisGame
 	end
 
 	def score
-		"Score #{playerOneScore}-#{playerTwoScore}"
+		if playerOneScore == 'forty' and playerTwoScore == 'forty'
+			return 'Duece'
+		else	
+			return "Score #{playerOneScore}-#{playerTwoScore}"
+		end
 	end
 
 end
