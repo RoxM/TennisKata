@@ -13,7 +13,7 @@ class TennisGame
 	end
 
 	def score
-		if playerOneScore == 'forty' and playerTwoScore == 'forty'
+		if @playerOne.points == @playerTwo.points and @playerOne.points >= 3
 			return 'Duece'
 		elsif isOnePlayerHavingAdvantage
 			return "Advantage #{getPlayerWithAdvantage}"
