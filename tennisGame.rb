@@ -35,10 +35,8 @@ class TennisGame
 	end
 
 	def getPlayerWithAdvantage
-		if isOnePlayerHavingAdvantage and @playerOne.points > @playerTwo.points 
-			return @playerOne.name
-		elsif isOnePlayerHavingAdvantage and @playerTwo.points > @playerOne.points 
-			return @playerTwo.name
+		if isOnePlayerHavingAdvantage
+			return playerWithMorePoints
 		end
 	end
 
@@ -53,12 +51,19 @@ class TennisGame
 	end
 
 	def getWinningPlayer
-		if isOnePlayerHasTwoOrMorePoints and @playerOne.points > @playerTwo.points 
+		if isOnePlayerHasTwoOrMorePoints  
+			return playerWithMorePoints
+		end
+	end
+
+	def playerWithMorePoints
+		if @playerOne.points > @playerTwo.points
 			return @playerOne.name
-		elsif isOnePlayerHasTwoOrMorePoints and @playerTwo.points > @playerOne.points
+		else
 			return @playerTwo.name
 		end
 	end
+
 
 
 
