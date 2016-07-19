@@ -13,21 +13,14 @@ class TennisGame
 	end
 
 	def score
-		if @playerOne.points == @playerTwo.points and @playerOne.points >= 3
-			return 'Duece'
-		elsif isOnePlayerHavingAdvantage
-			return "Advantage #{getPlayerWithAdvantage}"
-		elsif isOnePlayerHasTwoOrMorePoints
-			return "Game to #{getWinningPlayer}"
-		else		
-			return "Score #{playerOneScore}-#{playerTwoScore}"
-		end
+		return 'Duece'if @playerOne.points == @playerTwo.points and @playerOne.points >= 3
+		return "Advantage #{getPlayerWithAdvantage}" if isOnePlayerIsWinningByOne
+		return "Game to #{getWinningPlayer}" if isOnePlayerIsWinningByTwoOrMorePoints	
+		return "Score #{playerOneScore}-#{playerTwoScore}"
 	end
 
-	def isOnePlayerHavingAdvantage
-		if @playerOne.points == @playerTwo.points + 1 and @playerTwo.points >= 3
-			return true
-		elsif @playerTwo.points == @playerOne.points + 1 and @playerOne.points >= 3
+	def isOnePlayerIsWinningByOne
+		if (@playerOne.points == @playerTwo.points + 1 and @playerTwo.points >= 3) or (@playerTwo.points == @playerOne.points + 1 and @playerOne.points >= 3)
 			return true
 		else
 			return false
@@ -35,15 +28,13 @@ class TennisGame
 	end
 
 	def getPlayerWithAdvantage
-		if isOnePlayerHavingAdvantage
+		if isOnePlayerIsWinningByOne
 			return playerWithMorePoints
 		end
 	end
 
-	def isOnePlayerHasTwoOrMorePoints
-		if @playerOne.points >= 4 and @playerTwo.points <= @playerOne.points - 2
-			return true
-		elsif @playerTwo.points >= 4 and @playerOne.points <= @playerTwo.points - 2 
+	def isOnePlayerIsWinningByTwoOrMorePoints
+		if (@playerOne.points >= 4 and @playerTwo.points <= @playerOne.points - 2) or (@playerTwo.points >= 4 and @playerOne.points <= @playerTwo.points - 2) 
 			return true
 		else
 			return false
@@ -51,17 +42,13 @@ class TennisGame
 	end
 
 	def getWinningPlayer
-		if isOnePlayerHasTwoOrMorePoints  
+		if isOnePlayerIsWinningByTwoOrMorePoints  
 			return playerWithMorePoints
 		end
 	end
 
 	def playerWithMorePoints
-		if @playerOne.points > @playerTwo.points
-			return @playerOne.name
-		else
-			return @playerTwo.name
-		end
+		@playerOne.points > @playerTwo.points ? @playerOne.name : @playerTwo.name
 	end
 
 
