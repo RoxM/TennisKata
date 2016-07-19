@@ -80,6 +80,13 @@ describe TennisGame do
 		expect(@game.score).to eq("Advantage #{@playerOne.name}")
 	end
 
+	it 'returns Advantage for player one with one more point after 6 points each' do
+		7.times{@playerOne.winsPoint}
+		6.times{@playerTwo.winsPoint}
+
+		expect(@game.score).to eq("Advantage #{@playerOne.name}")
+	end
+
 	it 'returns Game for player 1 when kill player 2 with 4 points vs 0' do
 		4.times{@playerOne.winsPoint}
 
@@ -92,5 +99,18 @@ describe TennisGame do
 		expect(@game.score).to eq("Game to #{@playerTwo.name}")
 	end
 
+	it 'returns Game for player 1 when win by 2 to player 2 with 6 points vs 4' do
+		6.times{@playerOne.winsPoint}
+		4.times{@playerTwo.winsPoint}
+
+		expect(@game.score).to eq("Game to #{@playerOne.name}")
+	end
+
+	it 'returns Game for player 2 when win by 2 to player 1 with 4 points vs 6' do
+		5.times{@playerOne.winsPoint}
+		7.times{@playerTwo.winsPoint}
+
+		expect(@game.score).to eq("Game to #{@playerTwo.name}")
+	end
 
 end
