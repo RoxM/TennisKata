@@ -86,7 +86,7 @@ describe TennisGame do
 		expect(@game.score).to eq("Game to #{@playerOne.name}")
 	end
 
-	it 'eturns Game for player 2 when kill player 2 with 4 points vs 0' do
+	it 'returns Game for player 2 when kill player 2 with 4 points vs 0' do
 		4.times{@playerTwo.winsPoint}
 
 		expect(@game.score).to eq("Game to #{@playerTwo.name}")

@@ -17,8 +17,8 @@ class TennisGame
 			return 'Duece'
 		elsif isOnePlayerHavingAdvantage
 			return "Advantage #{getPlayerWithAdvantage}"
-		elsif @playerOne.points >= 4 and @playerTwo.points <= @playerOne.points - 2
-			return "Game to #{@playerOne.name}"
+		elsif isOnePlayerHasTwoOrMorePoints
+			return "Game to #{getWinningPlayer}"
 		else		
 			return "Score #{playerOneScore}-#{playerTwoScore}"
 		end
@@ -35,12 +35,31 @@ class TennisGame
 	end
 
 	def getPlayerWithAdvantage
-		if isOnePlayerHavingAdvantage and @playerOne.points > @playerTwo.points then
+		if isOnePlayerHavingAdvantage and @playerOne.points > @playerTwo.points 
 			return @playerOne.name
-		elsif isOnePlayerHavingAdvantage and @playerTwo.points > @playerOne.points then
+		elsif isOnePlayerHavingAdvantage and @playerTwo.points > @playerOne.points 
 			return @playerTwo.name
 		end
 	end
+
+	def isOnePlayerHasTwoOrMorePoints
+		if @playerOne.points >= 4 and @playerTwo.points <= @playerOne.points - 2
+			return true
+		elsif @playerTwo.points >= 4 and @playerOne.points <= @playerTwo.points - 2 
+			return true
+		else
+			return false
+		end
+	end
+
+	def getWinningPlayer
+		if isOnePlayerHasTwoOrMorePoints and @playerOne.points > @playerTwo.points 
+			return @playerOne.name
+		elsif isOnePlayerHasTwoOrMorePoints and @playerTwo.points > @playerOne.points
+			return @playerTwo.name
+		end
+	end
+
 
 
 end
